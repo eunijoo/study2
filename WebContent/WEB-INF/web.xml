@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>study</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+ <!--  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/error404.jsp</location> 
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error/error500.jsp</location> 
+  </error-page>
+   -->
+  
+
+<!-- servlet의 name과 servlet-mapping의 name의 이름이 동일해야하고, 이 이름은 다른곳에서 절대 사용하면안된다. -->
+  <servlet>
+  	<servlet-name>firstServlet</servlet-name>
+  	<servlet-class>com.user1.UserServlet</servlet-class>  <!-- 대소문자 틀리면 절대안됨. 서버 죽음. -->
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>firstServlet</servlet-name>
+  	<url-pattern>/first</url-pattern>  <!-- url : 주소  =>  클라이언트가 first라고 요청하면.. -->
+  </servlet-mapping>	
+	
+	<!-- 서블릿과 서블릿맵핑은 같이 와야한다. -->
+	 <servlet>
+  		<servlet-name>HelloServlet</servlet-name>
+  		<servlet-class>com.hello.HelloServlet</servlet-class>  <!-- 대소문자 틀리면 절대안됨. 서버 죽음. -->
+ 	 </servlet>
+  
+ 	 <servlet-mapping>
+  		<servlet-name>HelloServlet</servlet-name>
+  		<url-pattern>/hello</url-pattern>  <!-- url : 주소  =>  클라이언트가 first라고 요청하면.. -->
+ 	 </servlet-mapping>	
+	
+
+</web-app>
+
+<!-- 환경설정하는곳. 요즘엔 이렇게 설정안해줘도 되는데 2번째줄때문에 설정함. -->
+<!-- http://localhost:9090/study2 :이게 우리 사이트 주소. -->
+<!-- http://localhost:9090/study2/first :마지막에 servlet-name작성하면  UserServlet.java에서 작성한거 들어가는 주소 -->
+<!-- 객체는 우리가 못만듬. 톰캣이 만드는거. 최초방문자가 있을때 init이 실행이됨.(처음에 한번만 실행이됨) -->

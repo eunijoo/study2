@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+<!-- application/x-www-form-urlencoded: 인코딩을 주소형식으로 보내겠다. -->
+<form action="/study2/hello" method="post" enctype="application/x-www-form-urlencoded"> <!-- method명 안주면 기본으로 get /post일경우에는 post써줘야한다. -->
+	<p>이름:<input type="text"name="name"></p>
+	<p>나이:<input type="text"name="age"></p>
+	<p><button type="submit">확인</button> </p>
+</form>
+
+</body>
+</html>
