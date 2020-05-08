@@ -448,7 +448,7 @@ public class BoardDAO {
 		String sql;
 
 		try {
-			sql="UPDATE bbs SET name=?,subject=?,pwd=? WHERE num=?";
+			sql="UPDATE bbs SET name=?,subject=?,content=?,pwd=? WHERE num=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getSubject());
