@@ -37,7 +37,7 @@
    dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
    
    BoardDTO preReadDto=dao.preReadBoard(num, condition, keyword);
-   BoardDTO nextReadDto=dao.preReadBoard(num, condition, keyword);
+   BoardDTO nextReadDto=dao.nextReadBoard(num, condition, keyword);
 %>
 
 <!DOCTYPE html>
@@ -101,6 +101,18 @@ textarea:focus, input:focus{
     font-family:나눔고딕, "맑은 고딕", 돋움, sans-serif;
 }
 </style>
+<script type="text/javascript">
+function deleteBoard(num){
+	if(confirm("게시물을 삭제하시겠습니까?")){
+		var url="<%=cp%>/bbs/delete.jsp?num="+num+"&<%=query%>";
+		location.href=url;
+	}
+	
+}
+
+
+
+</script>
 </head>
 
 <body>
@@ -141,13 +153,17 @@ textarea:focus, input:focus{
        이전글 : 
       <% if(preReadDto!=null){ %>
       	<a href="<%=cp%>/bbs/article.jsp?num=<%=preReadDto.getNum()%>&<%=query%>"><%=preReadDto.getSubject()%></a>
+   	  <% } %>
     </td>
 </tr>
 
 
 <tr height="35" style="border-bottom: 1px solid #cccccc;">
     <td colspan="2" style="padding-left: 5px;">
-    다음글 : 다음글 입니다.
+    다음글 : 
+     <% if(nextReadDto!=null){ %>
+      	<a href="<%=cp%>/bbs/article.jsp?num=<%=nextReadDto.getNum()%>&<%=query%>"><%=nextReadDto.getSubject()%></a>
+   	  <% } %>
     </td>
 </tr>
 <tr height="30">
@@ -167,6 +183,5 @@ textarea:focus, input:focus{
 </tr>
 </table>
 </div>
-
 </body>
 </html>

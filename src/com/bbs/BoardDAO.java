@@ -448,7 +448,16 @@ public class BoardDAO {
 		String sql;
 
 		try {
-
+			sql="UPDATE bbs SET name=?,subject=?,pwd=? WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getPwd());
+			pstmt.setInt(5, dto.getNum());
+			
+			result=pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -470,7 +479,11 @@ public class BoardDAO {
 		String sql;
 
 		try {
-
+			sql="DELETE FROM bbs WHERE num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			result=pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
