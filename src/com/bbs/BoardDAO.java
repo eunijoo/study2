@@ -341,9 +341,9 @@ public class BoardDAO {
 			} else {
                 sb.append(" SELECT ROWNUM, tb.* FROM ( ");
                 sb.append("    SELECT num, subject FROM bbs ");
-                sb.append("    WHERE num > ? ");
-                sb.append("    ORDER BY num ASC ");
-                sb.append(" ) tb WHERE ROWNUM=1 ");
+                sb.append("    WHERE num > ? ");  //큰것 중에 가장 작은거
+                sb.append("    ORDER BY num ASC "); //오름차순으로 정렬하면 제일 먼저나오는게 제일 작은값
+                sb.append(" ) tb WHERE ROWNUM=1 "); //1번째 값
 
                 pstmt=conn.prepareStatement(sb.toString());
                 pstmt.setInt(1, num);
@@ -396,9 +396,9 @@ public class BoardDAO {
                 } else {
     				sb.append("      WHERE (INSTR(" + condition + ", ?) >= 1) ");
                 }
-                sb.append("             AND (num < ? ) ");
-                sb.append("         ORDER BY num DESC ");
-                sb.append("      ) tb WHERE ROWNUM=1 ");
+                sb.append("             AND (num < ? ) ");  //작은것 중에서 큰거
+                sb.append("         ORDER BY num DESC "); //내림차순으로 정렬하면 제일 먼저나오는게 제일 큰값
+                sb.append("      ) tb WHERE ROWNUM=1 ");  //1번째값
 
                 pstmt=conn.prepareStatement(sb.toString());
                 pstmt.setString(1, keyword);
