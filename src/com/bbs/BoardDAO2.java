@@ -6,17 +6,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.util.DBCPConn;
 import com.util.DBConn;
 
 // ORACLE 11g 방식
-public class BoardDAO {
+public class BoardDAO2 {
 	private Connection conn=DBConn.getConnection();
 	
   // 게시글 등록
 	public int insertBoard(BoardDTO dto) throws Exception {
 		int result=0;
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		String sql;
 
@@ -41,7 +39,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}	
 		return result;
 	}
@@ -49,7 +46,6 @@ public class BoardDAO {
   // 데이터 개수
 	public int dataCount() {
 		int result=0;
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql;
@@ -78,7 +74,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}
 		
 		return result;
@@ -87,7 +82,6 @@ public class BoardDAO {
   // 글 리스트(목록)
 	public List<BoardDTO> listBoard(int start, int end) {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		StringBuilder sb=new StringBuilder();
@@ -132,7 +126,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}
 		
 		return list;
@@ -141,7 +134,6 @@ public class BoardDAO {
   // 검색 모드에서 전체의 개수 구하기
     public int dataCount(String condition, String keyword) {
         int result=0;
-        Connection conn=DBCPConn.getConnection();
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         String sql;
@@ -178,8 +170,6 @@ public class BoardDAO {
 				}catch (Exception e2){
 				}
 			}
-			
-			DBCPConn.close(conn);
 		}
 
         return result;
@@ -188,7 +178,7 @@ public class BoardDAO {
   // 검색에서 리스트(목록)
     public List<BoardDTO> listBoard(int start, int end, String condition, String keyword) {
         List<BoardDTO> list=new ArrayList<BoardDTO>();
-        Connection conn=DBCPConn.getConnection();
+
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         StringBuilder sb = new StringBuilder();
@@ -244,14 +234,12 @@ public class BoardDAO {
 				}catch (Exception e2){
 				}
 			}
-			DBCPConn.close(conn);
 		}
         return list;
     }
     
   // 글보기
     public BoardDTO readBoard(int num) {
-    	Connection conn=DBCPConn.getConnection();
         BoardDTO dto=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -291,7 +279,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}
 
         return dto;
@@ -300,7 +287,6 @@ public class BoardDAO {
   // 조회수
 	public int updateHitCount(int num) throws Exception {
 		int result=0;
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		String sql;
 
@@ -320,7 +306,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}
 		
 		return result;
@@ -329,7 +314,6 @@ public class BoardDAO {
   // 이전글
     public BoardDTO preReadBoard(int num, String condition, String keyword) {
         BoardDTO dto=null;
-        Connection conn=DBCPConn.getConnection();
 
         PreparedStatement pstmt=null;
         ResultSet rs=null;
@@ -387,7 +371,6 @@ public class BoardDAO {
 				}catch (Exception e2){
 				}
 			}
-			DBCPConn.close(conn);
 		}
     
         return dto;
@@ -396,7 +379,7 @@ public class BoardDAO {
   // 다음글
     public BoardDTO nextReadBoard(int num, String condition, String keyword) {
         BoardDTO dto=null;
-        Connection conn=DBCPConn.getConnection();
+
         PreparedStatement pstmt=null;
         ResultSet rs=null;
         StringBuilder sb = new StringBuilder();
@@ -453,7 +436,6 @@ public class BoardDAO {
 				}catch (Exception e2){
 				}
 			}
-			DBCPConn.close(conn);
 		}
 
         return dto;
@@ -462,7 +444,6 @@ public class BoardDAO {
   //수정  
 	public int updateBoard(BoardDTO dto) throws Exception {
 		int result=0;
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		String sql;
 
@@ -487,7 +468,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}		
 		return result;
 	}
@@ -495,7 +475,6 @@ public class BoardDAO {
   //삭제   
 	public int deleteBoard(int num) throws Exception {
 		int result=0;
-		Connection conn=DBCPConn.getConnection();
 		PreparedStatement pstmt=null;
 		String sql;
 
@@ -515,7 +494,6 @@ public class BoardDAO {
 				} catch (Exception e2) {
 				}
 			}
-			DBCPConn.close(conn);
 		}		
 		return result;
 	}
