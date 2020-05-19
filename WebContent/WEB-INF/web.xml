@@ -43,7 +43,36 @@
   		<servlet-name>HelloServlet</servlet-name>
   		<url-pattern>/hello</url-pattern>  <!-- url : 주소  =>  클라이언트가 first라고 요청하면.. -->
  	 </servlet-mapping>	
-	
+ 	 
+ 	 <context-param>
+ 	 	<param-name>ip</param-name>
+ 	 	<param-value>127.0.0.1</param-value>
+ 	 </context-param>
+ 	 <context-param>
+ 	 	<param-name>user</param-name>
+ 	 	<param-value>김종완</param-value>
+ 	 </context-param>
+ 	 <context-param>
+ 	 	<param-name>pwd</param-name>
+ 	 	<param-value>조용히해</param-value>
+ 	 </context-param>
+ 	 
+ 	 <servlet>
+ 	 	<servlet-name>servletConfigTest</servlet-name>
+ 	 	<servlet-class>com.sc.ServletConfigTest</servlet-class>
+ 	 	<init-param>
+ 	 		<param-name>subject</param-name>
+ 	 		<param-value>자바</param-value>
+ 	 	</init-param>
+ 	 	<init-param>
+ 	 		<param-name>score</param-name>
+ 	 		<param-value>100</param-value>
+ 	 	</init-param>
+ 	 </servlet>
+	<servlet-mapping>
+		<servlet-name>servletConfigTest</servlet-name>
+		<url-pattern>/config</url-pattern>
+	</servlet-mapping>
 
 </web-app>
 
