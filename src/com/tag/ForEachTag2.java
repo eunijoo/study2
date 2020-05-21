@@ -47,5 +47,4 @@ public class ForEachTag2 extends TagSupport{
 		items=null;
 		return EVAL_PAGE;
 	}
-
 }

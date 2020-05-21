@@ -20,6 +20,15 @@
   	<location>/error/error500.jsp</location> 
   </error-page>
    -->
+   
+   <filter>
+   	<filter-name>timerFilter</filter-name>
+   	<filter-class>com.filter.TimerFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   	<filter-name>timerFilter</filter-name>
+   	<url-pattern>/*</url-pattern> <!-- 모든파일이 이걸 거쳐간다. -->
+   </filter-mapping>
   
 
 <!-- servlet의 name과 servlet-mapping의 name의 이름이 동일해야하고, 이 이름은 다른곳에서 절대 사용하면안된다. -->
